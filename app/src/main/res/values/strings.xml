@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">supreme-car-wash</string>
+    <string name="bnv_servicio">Servicios</string>
+    <string name="bnv_inicio">Inicio</string>
+    <string name="bnv_citas">Citas</string>
+    <string name="bnv_perfil">Perfil</string>
 </resources>
