@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="botonLogin">#FFA500</color>
+    <color name="textoLogin">#673AB7</color>
 </resources>

@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
         val splashScreenDuration = 3000
 
         binding.animationView.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, splashScreenDuration.toLong())

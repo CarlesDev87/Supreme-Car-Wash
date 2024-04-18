@@ -4,6 +4,7 @@
         android:id="@+id/bvn_inicio"
         android:title="@string/bnv_inicio"
         android:icon="@drawable/ic_bnv_inicio"
+
         />
     <item
         android:id="@+id/bvn_servicio"
