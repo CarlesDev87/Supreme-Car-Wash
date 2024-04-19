@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/botonLogin"
         android:text="@string/btnlogin"
+        android:gravity="center_horizontal"
         android:textColor="@color/textoLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +80,7 @@
         app:layout_constraintStart_toStartOf="@id/btnLogin"
         app:layout_constraintEnd_toEndOf="@id/btnLogin"
         android:textColor="@color/white"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/pacifico"
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
         android:textSize="20sp"/>
