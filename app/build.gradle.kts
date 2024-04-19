@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.material:material:x.y.z")
     implementation("com.airbnb.android:lottie:6.1.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
