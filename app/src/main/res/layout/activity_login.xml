@@ -21,7 +21,7 @@
         android:textAlignment="center"
         android:text="@string/titulo1"
         android:textColor="@color/white"
-        android:textSize="45sp"/>
+        android:textSize="49sp"/>
     <TextView
         android:id="@+id/titulo2"
         android:layout_width="0dp"
@@ -34,7 +34,7 @@
         android:textAlignment="center"
         android:text="@string/titulo2"
         android:textColor="@color/white"
-        android:textSize="45sp"/>
+        android:textSize="49sp"/>
     <TextView
         android:id="@+id/titulo3"
         android:layout_width="0dp"
@@ -47,7 +47,7 @@
         android:textAlignment="center"
         android:text="@string/titulo3"
         android:textColor="@color/white"
-        android:textSize="45sp"/>
+        android:textSize="49sp"/>
     <!--ImageView
         android:id="@+id/fotologin"
         android:layout_width="150dp"
@@ -62,29 +62,31 @@
         android:id="@+id/btnLogin"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#A21919"
+        android:backgroundTint="@color/principal"
         android:text="@string/btnlogin"
         android:gravity="center_horizontal"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="310dp"
+        app:layout_constraintBottom_toTopOf="@id/registrate"
         android:textSize="20sp"
         android:fontFamily="@font/pacifico"
-       app:layout_constraintTop_toBottomOf="@id/titulo3"
+
         />
     <TextView
+        android:id="@+id/registrate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/nologin"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@id/btnLogin"
         app:layout_constraintEnd_toEndOf="@id/btnLogin"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@color/white"
         android:fontFamily="@font/pacifico"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        android:textSize="20sp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:layout_marginBottom="30dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

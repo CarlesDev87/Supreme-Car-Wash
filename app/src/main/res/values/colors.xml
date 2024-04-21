@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="botonLogin">#FFA500</color>
     <color name="textoLogin">#673AB7</color>
+    <color name="principal">#A21919</color>
 </resources>
