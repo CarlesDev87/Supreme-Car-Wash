@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.frgMain, fragment).commit()
 
+
     }
 
     private fun getRetrofit(): Retrofit {
