@@ -9,5 +9,10 @@
     <string name="titulo2">Car</string>
     <string name="titulo3">Wash</string>
     <string name="nologin">Si no tienes cuenta, regístrate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contraseña">Introduce tu contraseña</string>
+    <string name="usuario">Introduce tu usuario</string>
+    <string name="btnEntrar">Entrar</string>
 
 </resources>
