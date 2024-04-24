@@ -1,5 +1,6 @@
 package com.example.supreme_car_wash.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ class LavadoAdapter(
         return ViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: LavadoAdapter.ViewHolder, position: Int) {
         val lavado = lavados[position]
         val vehiculo = vehiculos[position]
@@ -33,6 +35,7 @@ class LavadoAdapter(
             binding.matriculaCoche.text = "Matricula: ${vehiculo.matricula}"
             binding.precioLavado.text = "Precio: ${lavado.precio}"
             binding.cantidad.text = lavado.precio.toString()
+
         }
 
     }
