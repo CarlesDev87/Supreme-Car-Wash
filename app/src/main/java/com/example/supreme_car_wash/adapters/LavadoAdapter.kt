@@ -10,6 +10,7 @@ import com.example.supreme_car_wash.R
 import com.example.supreme_car_wash.databinding.ItemCochesBinding
 import com.example.supreme_car_wash.responses.LavadoResponse
 import com.example.supreme_car_wash.responses.VehiculoResponse
+import java.util.Locale
 
 class LavadoAdapter(
     private val lavados: List<LavadoResponse>, private val vehiculos: List<VehiculoResponse>,
@@ -29,12 +30,12 @@ class LavadoAdapter(
         val vehiculo = vehiculos[position]
         with(holder) {
             setListener(lavado)
-            binding.tipoLavado.text = "Tipo Lavado: ${lavado.tipoLavado}"
-            binding.marcaCoche.text = "Marca: ${vehiculo.marca}"
-            binding.modeloCoche.text = "Modelo: ${vehiculo.modelo}"
-            binding.matriculaCoche.text = "Matricula: ${vehiculo.matricula}"
-            binding.precioLavado.text = "Precio: ${lavado.precio}"
-            binding.cantidad.text = lavado.precio.toString()
+            binding.tipoLavado.text = lavado.tipoLavado.uppercase()
+            binding.marcaCoche.text = vehiculo.marca.uppercase()
+            binding.modeloCoche.text = vehiculo.modelo.uppercase()
+            binding.matriculaCoche.text = vehiculo.matricula.uppercase()
+            binding.precioLavado.text = "Precio"
+            binding.cantidad.text = "${lavado.precio.toString()} €"
 
         }
 

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp"
-    android:backgroundTint="@color/principal"
+    android:backgroundTint="#FFFFFF"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,10 +24,11 @@
             app:layout_constraintStart_toEndOf="@id/imgCoche"
             app:layout_constraintTop_toTopOf="@id/cnstCoches"
             tools:text="Tipo de Lavado"
+            android:textStyle="bold"
             android:layout_marginStart="10dp"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/pacifico"
+            android:textSize="30sp"
+            android:textColor="@color/principal"
+            android:fontFamily="@font/exo_2"
             />
 
         <ImageView
@@ -44,12 +45,14 @@
             android:id="@+id/marcaCoche"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/imgCoche"
             app:layout_constraintTop_toBottomOf="@id/tipoLavado"
             tools:text="Tipo de Lavado"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/pacifico"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/principal"
+            android:fontFamily="@font/exo_2"
             />
 
         <TextView
@@ -59,9 +62,11 @@
             app:layout_constraintStart_toEndOf="@id/imgCoche"
             app:layout_constraintTop_toBottomOf="@id/marcaCoche"
             tools:text="Tipo de Lavado"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/pacifico"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/principal"
+            android:fontFamily="@font/exo_2"
             />
 
         <TextView
@@ -71,9 +76,11 @@
             app:layout_constraintStart_toEndOf="@id/imgCoche"
             app:layout_constraintTop_toBottomOf="@id/modeloCoche"
             tools:text="Tipo de Lavado"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/pacifico"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/principal"
+            android:fontFamily="@font/exo_2"
             />
 
         <TextView
@@ -83,10 +90,13 @@
             app:layout_constraintStart_toEndOf="@id/tipoLavado"
             app:layout_constraintTop_toTopOf="@id/cnstCoches"
             app:layout_constraintEnd_toEndOf="@id/cnstCoches"
+            android:layout_marginTop="8dp"
             tools:text="Precio"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/pacifico"
+            android:textStyle="bold"
+            android:textSize="20sp"
+
+            android:textColor="@color/principal"
+            android:fontFamily="@font/exo_2"
             />
 
         <TextView
@@ -96,10 +106,13 @@
             app:layout_constraintStart_toEndOf="@id/tipoLavado"
             app:layout_constraintTop_toBottomOf="@id/precioLavado"
             app:layout_constraintEnd_toEndOf="@id/cnstCoches"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="Precio"
+            android:textStyle="bold"
             android:layout_marginStart="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/pacifico"
+            android:textColor="@color/principal"
+            android:fontFamily="@font/exo_2"
+            android:textSize="35sp"
             />
 
 
