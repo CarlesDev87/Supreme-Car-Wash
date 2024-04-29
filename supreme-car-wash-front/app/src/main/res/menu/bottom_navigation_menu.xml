@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bvn_inicio"
+        android:title="@string/bnv_inicio"
+        android:icon="@drawable/ic_bnv_inicio"
+
+        />
+    <item
+        android:id="@+id/bvn_servicio"
+        android:title="@string/bnv_servicio"
+        android:icon="@drawable/coche"
+        />
+    <item
+        android:id="@+id/bvn_citas"
+        android:title="@string/bnv_citas"
+        android:icon="@drawable/calendario"
+        />
+    <item
+        android:id="@+id/bvn_perfil"
+        android:title="@string/bnv_perfil"
+        android:icon="@drawable/usuario"
+        />
+</menu>
