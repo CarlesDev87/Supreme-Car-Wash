@@ -26,6 +26,7 @@ class LavadoAdapter(
 
 
     override fun onBindViewHolder(holder: LavadoAdapter.ViewHolder, position: Int) {
+
         val lavado = lavados[position]
         val vehiculo = vehiculos[position]
         with(holder) {
@@ -35,7 +36,7 @@ class LavadoAdapter(
             binding.modeloCoche.text = vehiculo.modelo.uppercase()
             binding.matriculaCoche.text = vehiculo.matricula.uppercase()
             binding.precioLavado.text = "Precio"
-            binding.cantidad.text = "${lavado.precio.toString()} €"
+            binding.cantidad.text = "${lavado.precio} €"
 
         }
 

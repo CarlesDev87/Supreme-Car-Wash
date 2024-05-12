@@ -16,4 +16,4 @@ INSERT INTO lavado (fecha_creacion, tipo_lavado, precio, estado, id_vehiculo) VA
 --VALUES
 --    ('Juan', 'Gómez', 'Calle Principal 123', '123456789', 'juan@example.com', 'password123'),
 --    ('María', 'López', 'Avenida Central 456', '987654321', 'maria@example.com', 'maria123'),
---    ('Pedro', 'Martínez', 'Plaza Mayor 789', '456123789', 'pedro@example.com', 'pedro456');
+ --   ('Pedro', 'Martínez', 'Plaza Mayor 789', '456123789', 'pedro@example.com', 'pedro456');
