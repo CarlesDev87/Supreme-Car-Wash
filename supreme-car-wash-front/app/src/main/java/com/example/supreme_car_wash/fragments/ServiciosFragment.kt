@@ -7,12 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.supreme_car_wash.R
 
-
-
-
 class ServiciosFragment : Fragment() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +25,6 @@ class ServiciosFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ServiciosFragment().apply {

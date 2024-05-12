@@ -48,6 +48,7 @@
         android:text="@string/titulo3"
         android:textColor="@color/white"
         android:textSize="49sp"/>
+
     <!--ImageView
         android:id="@+id/fotologin"
         android:layout_width="150dp"
@@ -72,12 +73,14 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textUri"
+            android:inputType="text"
             android:hint="@string/usuario"
             android:fontFamily="@font/pacifico"
             android:textSize="17sp"
+            android:textColor="@color/white"
             />
 
 
@@ -97,12 +100,14 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textUri"
+            android:inputType="textPassword"
             android:hint="@string/contraseña"
             android:fontFamily="@font/pacifico"
             android:textSize="17sp"
+            android:textColor="@color/white"
             />
 
 

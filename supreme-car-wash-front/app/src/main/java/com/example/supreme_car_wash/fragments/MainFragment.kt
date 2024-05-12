@@ -1,5 +1,6 @@
 package com.example.supreme_car_wash.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,11 +23,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainFragment : Fragment(), OnClickListenerLavado {
 
-    private lateinit var lavados : List<LavadoResponse>
+    private lateinit var lavados: List<LavadoResponse>
     private lateinit var binding: FragmentMainBinding
     private lateinit var lavadoAdapter: LavadoAdapter
     private lateinit var linearLayout: LinearLayoutManager
-    private lateinit var vehiculos : List<VehiculoResponse>
+    private lateinit var vehiculos: List<VehiculoResponse>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,7 @@ class MainFragment : Fragment(), OnClickListenerLavado {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainBinding.inflate(inflater,container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
 
         lavados = emptyList()
@@ -57,7 +58,6 @@ class MainFragment : Fragment(), OnClickListenerLavado {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
 
     private fun getLavados(query: String, query2: String) {
         CoroutineScope(Dispatchers.IO).launch {

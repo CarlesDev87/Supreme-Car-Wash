@@ -10,5 +10,6 @@ public interface IClienteService {
 
     void insertarCliente(Cliente cliente);
 
-    boolean loginCliente(String nombre, String password);
+
+
 }

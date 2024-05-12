@@ -7,6 +7,7 @@ import com.example.supreme_car_wash.R
 import com.example.supreme_car_wash.databinding.ActivityMainBinding
 import com.example.supreme_car_wash.fragments.CitasFragment
 import com.example.supreme_car_wash.fragments.MainFragment
+import com.example.supreme_car_wash.responses.ClienteResponse
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import retrofit2.Retrofit
@@ -28,7 +29,12 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().add(R.id.frgMain, fragmentMain).commit()
 
+        val cliente = intent.getSerializableExtra("cliente") as? ClienteResponse
 
+
+        if (cliente != null) {
+            binding.nombreUsuario.text = cliente.nombre
+        }
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)

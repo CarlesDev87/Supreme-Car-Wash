@@ -1,6 +1,7 @@
 package com.example.supreme_car_wash.responses
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class ClienteResponse(
     @SerializedName("id") val id: Int,
@@ -11,5 +12,5 @@ class ClienteResponse(
     @SerializedName("email") val email: String,
     @SerializedName("password") val pass: String,
     @SerializedName("vehiculo") val vehiculo: String,
-) {
+): Serializable {
 }

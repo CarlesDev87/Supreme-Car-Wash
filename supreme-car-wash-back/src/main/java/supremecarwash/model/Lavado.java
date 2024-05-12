@@ -27,6 +27,9 @@ public class Lavado {
     private String tipoLavado;
 
     @Column
+    private String descripcion;
+
+    @Column
     private Integer precio;
 
     @Column
