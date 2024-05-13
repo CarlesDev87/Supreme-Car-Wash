@@ -2,17 +2,17 @@ package com.example.supreme_car_wash.activities
 
 import android.content.Intent
 import android.os.Bundle
+import com.auth0.jwt.interfaces.DecodedJWT
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.auth0.android.jwt.JWT
+import com.auth0.jwt.JWT
 import com.example.supreme_car_wash.API.APIService
 import com.example.supreme_car_wash.R
 import com.example.supreme_car_wash.databinding.ActivityLoginBinding
 import com.example.supreme_car_wash.responses.ClienteResponse
-import com.google.android.gms.fido.fido2.api.common.Algorithm
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
+    private lateinit var cliente: ClienteResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -64,10 +64,14 @@ class LoginActivity : AppCompatActivity() {
 
             loginCliente(query)
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        }
+    }
 
-
+    private fun decodeToken(token: String): DecodedJWT {
+        return try {
+            JWT.decode(token)
+        } catch (e: Exception) {
+            throw IllegalArgumentException("Invalid token")
         }
     }
 
@@ -85,7 +89,22 @@ class LoginActivity : AppCompatActivity() {
                     val tokenResponse = response.body()
                     val token = tokenResponse?.token
 
+                    val decodedJWT: DecodedJWT? = token?.let { decodeToken(it) }
 
+                    val id = decodedJWT?.getClaim("id")?.asInt()
+                    val nombre = decodedJWT?.getClaim("nombre")?.asString()
+                    val apellido = decodedJWT?.getClaim("apellido")?.asString()
+                    val email = decodedJWT?.getClaim("email")?.asString()
+                    val direccion = decodedJWT?.getClaim("direccion")?.asString()
+                    val telefono = decodedJWT?.getClaim("telefono")?.asString()
+                    val password = decodedJWT?.getClaim("password")?.asString()
+
+
+                    cliente = ClienteResponse(id, nombre, apellido, email, direccion, telefono, password)
+
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("cliente", cliente)
+                    startActivity(intent)
 
                     if (!token.isNullOrEmpty()) {
                         val sharedPreferences = getSharedPreferences("Validacion", MODE_PRIVATE)
@@ -124,6 +143,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
+
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()

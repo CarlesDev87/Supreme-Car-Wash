@@ -12,11 +12,6 @@
         android:icon="@drawable/coche"
         />
     <item
-        android:id="@+id/bvn_citas"
-        android:title="@string/bnv_citas"
-        android:icon="@drawable/calendario"
-        />
-    <item
         android:id="@+id/bvn_perfil"
         android:title="@string/bnv_perfil"
         android:icon="@drawable/usuario"

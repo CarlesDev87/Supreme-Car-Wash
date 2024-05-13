@@ -38,6 +38,12 @@ public class AuthService {
 
         claims.put("id", cliente.getId());
         claims.put("nombre", cliente.getNombre());
+        claims.put("apellido", cliente.getApellido());
+        claims.put("telefono", cliente.getTelefono());
+        claims.put("direccion", cliente.getDireccion());
+        claims.put("email", cliente.getEmail());
+        claims.put("password", cliente.getPassword());
+
 
         Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 

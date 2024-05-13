@@ -21,13 +21,11 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainFragment : Fragment(), OnClickListenerLavado {
+class MainFragment : Fragment() {
 
-    private lateinit var lavados: List<LavadoResponse>
+
     private lateinit var binding: FragmentMainBinding
-    private lateinit var lavadoAdapter: LavadoAdapter
-    private lateinit var linearLayout: LinearLayoutManager
-    private lateinit var vehiculos: List<VehiculoResponse>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,18 +34,12 @@ class MainFragment : Fragment(), OnClickListenerLavado {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-
-        lavados = emptyList()
-        vehiculos = emptyList()
-
-        getLavados("/lavados", "/vehiculos")
 
         return binding.root
     }
@@ -59,23 +51,6 @@ class MainFragment : Fragment(), OnClickListenerLavado {
             .build()
     }
 
-    private fun getLavados(query: String, query2: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val llamada = getRetrofit().create(APIService::class.java).getLavados(query)
-            lavados = llamada.body()!!
-            val llamada2 = getRetrofit().create(APIService::class.java).getVehiculos(query2)
-            vehiculos = llamada2.body()!!
-            lavadoAdapter = LavadoAdapter(lavados, vehiculos, this@MainFragment)
-            linearLayout = LinearLayoutManager(context)
-
-            withContext(Dispatchers.Main) {
-                binding.recyclerLavados.apply {
-                    layoutManager = linearLayout
-                    adapter = lavadoAdapter
-                }
-            }
-        }
-    }
 
 
     companion object {
@@ -88,7 +63,5 @@ class MainFragment : Fragment(), OnClickListenerLavado {
             }
     }
 
-    override fun onClick(lavado: LavadoResponse) {
 
-    }
 }

@@ -5,9 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:elevation="8dp"
-    android:layout_margin="10dp"
+    android:layout_margin="3dp"
     android:backgroundTint="#FFFFFF"
     >
+
+    <View
+        android:id="@+id/fondoTipoLavado"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cnstCoches"
@@ -26,7 +35,7 @@
             app:layout_constraintTop_toTopOf="@id/cnstCoches"
             tools:text="Tipo de Lavado"
             android:textStyle="bold"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:textSize="30sp"
             android:textColor="@color/principal"
             android:fontFamily="@font/exo_2"
@@ -36,9 +45,11 @@
             android:id="@+id/imgCoche"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:layout_marginStart="5dp"
             app:layout_constraintStart_toStartOf="@id/cnstCoches"
             app:layout_constraintTop_toTopOf="@id/cnstCoches"
             app:layout_constraintBottom_toBottomOf="@id/cnstCoches"
+            app:layout_constraintEnd_toStartOf="@id/tipoLavado"
             android:src="@drawable/supreme"
             />
 
@@ -115,8 +126,6 @@
             android:fontFamily="@font/exo_2"
             android:textSize="35sp"
             />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
