@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.supreme_car_wash.R
 import com.example.supreme_car_wash.databinding.ItemCochesBinding
@@ -29,6 +30,23 @@ class LavadoAdapter(
 
         val lavado = lavados[position]
         val vehiculo = vehiculos[position]
+
+        val color = when (lavado.tipoLavado) {
+            "Normal" ->R.color.normal
+            "Integral" ->R.color.integral
+            "Deluxe" ->R.color.deluxe
+            else ->R.color.normal
+        }
+
+        val icono = when (lavado.tipoLavado) {
+            "Normal" ->R.drawable.normal
+            "Integral" ->R.drawable.integral
+            "Deluxe" ->R.drawable.deluxe
+            else ->R.drawable.normal
+        }
+
+
+
         with(holder) {
             setListener(lavado)
             binding.tipoLavado.text = lavado.tipoLavado.uppercase()
@@ -37,9 +55,9 @@ class LavadoAdapter(
             binding.matriculaCoche.text = vehiculo.matricula.uppercase()
             binding.precioLavado.text = "Precio"
             binding.cantidad.text = "${lavado.precio} €"
-
+            binding.fondoTipoLavado.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, color))
+            binding.imgCoche.setImageResource(icono)
         }
-
     }
 
     override fun getItemCount(): Int = lavados.size
