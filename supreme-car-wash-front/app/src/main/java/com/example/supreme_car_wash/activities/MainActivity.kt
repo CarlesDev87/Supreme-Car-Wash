@@ -42,20 +42,50 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setOnItemSelectedListener {
 
-            item ->
+                item ->
 
             when (item.itemId) {
+
                 R.id.bvn_inicio -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frgMain, fragmentMain).commit()
+                    supportFragmentManager.beginTransaction().apply {
+                        setCustomAnimations(
+                            R.anim.fade_in_fragment,
+                            R.anim.fade_out_fragment,
+                            R.anim.fade_in_fragment,
+                            R.anim.fade_out_fragment
+                        )
+                        replace(R.id.frgMain, fragmentMain)
+                        addToBackStack(null)
+                        commit()
+                    }
                 }
+
                 R.id.bvn_servicio -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frgMain, fragmentServicios).commit()
+                    supportFragmentManager.beginTransaction().apply {
+                        setCustomAnimations(
+                            R.anim.fade_in_fragment,
+                            R.anim.fade_out_fragment,
+                            R.anim.fade_in_fragment,
+                            R.anim.fade_out_fragment
+                        )
+                        replace(R.id.frgMain, fragmentServicios)
+                        addToBackStack(null)
+                        commit()
+                    }
                 }
+
                 R.id.bvn_perfil -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frgMain, fragmentPerfil).commit()
+                    supportFragmentManager.beginTransaction().apply {
+                        setCustomAnimations(
+                            R.anim.fade_in_fragment,
+                            R.anim.fade_out_fragment,
+                            R.anim.fade_in_fragment,
+                            R.anim.fade_out_fragment
+                        )
+                        replace(R.id.frgMain, fragmentPerfil)
+                        addToBackStack(null)
+                        commit()
+                    }
                 }
 
             }
@@ -63,10 +93,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
-
-
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()

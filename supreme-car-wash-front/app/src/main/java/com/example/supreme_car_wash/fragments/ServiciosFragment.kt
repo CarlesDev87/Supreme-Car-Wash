@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.supreme_car_wash.API.APIService
 import com.example.supreme_car_wash.R
@@ -29,6 +30,7 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
     private lateinit var lavadoAdapter: LavadoAdapter
     private lateinit var linearLayout: LinearLayoutManager
     private lateinit var vehiculos: List<VehiculoResponse>
+    private lateinit var itemDecoration: DividerItemDecoration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,7 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
 
         lavados = emptyList()
         vehiculos = emptyList()
+        itemDecoration = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
 
         getLavados("/lavados", "/vehiculos")
 
@@ -68,6 +71,7 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
             lavadoAdapter = LavadoAdapter(lavados, vehiculos, this@ServiciosFragment)
             linearLayout = LinearLayoutManager(context)
 
+
             val tipoLavados = lavados.map { it.tipoLavado }
 
 
@@ -77,6 +81,7 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
                 binding.recyclerLavados.apply {
                     layoutManager = linearLayout
                     adapter = lavadoAdapter
+                    addItemDecoration(itemDecoration)
                 }
             }
         }

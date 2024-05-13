@@ -25,7 +25,6 @@ class LavadoAdapter(
         return ViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: LavadoAdapter.ViewHolder, position: Int) {
 
         val lavado = lavados[position]
@@ -44,8 +43,6 @@ class LavadoAdapter(
             "Deluxe" ->R.drawable.deluxe
             else ->R.drawable.normal
         }
-
-
 
         with(holder) {
             setListener(lavado)
