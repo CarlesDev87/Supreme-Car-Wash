@@ -30,21 +30,20 @@
                     android:layout_margin="20dp"
                     android:src="@drawable/supreme"
                     app:layout_constraintBottom_toBottomOf="@id/constraintCollapsingToolbar"
-                    app:layout_constraintStart_toStartOf="@id/constraintCollapsingToolbar"
-                    />
+                    app:layout_constraintStart_toStartOf="@id/constraintCollapsingToolbar" />
 
                 <TextView
                     android:id="@+id/nombreUsuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/exo_2"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toTopOf="@id/vehiculoUsuario"
                     app:layout_constraintEnd_toEndOf="@id/constraintCollapsingToolbar"
                     app:layout_constraintStart_toEndOf="@id/logoUsuario"
-                    app:layout_constraintBottom_toTopOf="@id/vehiculoUsuario"
                     tools:text="Nombre del cliente" />
 
                 <TextView
@@ -66,14 +65,14 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
                 android:backgroundTint="@color/principal"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -95,7 +94,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_gravity="bottom"
         app:itemIconTint="#FFA21919"
         app:menu="@menu/bottom_navigation_menu" />

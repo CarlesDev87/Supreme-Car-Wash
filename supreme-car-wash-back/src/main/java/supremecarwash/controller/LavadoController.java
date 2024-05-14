@@ -19,11 +19,21 @@ public class LavadoController {
     public List<Lavado> getLavados() {
 
         return service.listarLavados();
+
     }
 
     @PostMapping
     public void addLavado(@RequestBody Lavado lavado) {
+
         service.insertarLavado(lavado);
+
+    }
+
+    @GetMapping("/tipoLavado")
+    public List<Lavado> tipoLavado() {
+
+        return service.getTipoLavados();
+
     }
 
 }

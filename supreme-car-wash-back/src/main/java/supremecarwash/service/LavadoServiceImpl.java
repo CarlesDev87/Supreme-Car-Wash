@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import supremecarwash.model.Lavado;
 import supremecarwash.repository.ILavadoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,5 +22,11 @@ public class LavadoServiceImpl implements ILavadoService {
     @Override
     public void insertarLavado(Lavado lavado) {
         repo.save(lavado);
+    }
+
+    @Override
+    public List<Lavado> getTipoLavados() {
+
+        return repo.encontrarTiposLavados();
     }
 }

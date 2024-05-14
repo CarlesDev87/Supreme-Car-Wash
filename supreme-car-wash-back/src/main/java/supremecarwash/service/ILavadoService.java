@@ -9,4 +9,6 @@ public interface ILavadoService {
      List<Lavado> listarLavados();
 
      void insertarLavado(Lavado lavado);
+
+     List<Lavado> getTipoLavados();
 }

@@ -31,17 +31,17 @@ class LavadoAdapter(
         val vehiculo = vehiculos[position]
 
         val color = when (lavado.tipoLavado) {
-            "Normal" ->R.color.normal
-            "Integral" ->R.color.integral
-            "Deluxe" ->R.color.deluxe
-            else ->R.color.normal
+            "Normal" -> R.color.normal
+            "Integral" -> R.color.integral
+            "Deluxe" -> R.color.deluxe
+            else -> R.color.normal
         }
 
         val icono = when (lavado.tipoLavado) {
-            "Normal" ->R.drawable.normal
-            "Integral" ->R.drawable.integral
-            "Deluxe" ->R.drawable.deluxe
-            else ->R.drawable.normal
+            "Normal" -> R.drawable.normal
+            "Integral" -> R.drawable.integral
+            "Deluxe" -> R.drawable.deluxe
+            else -> R.drawable.normal
         }
 
         with(holder) {
@@ -52,7 +52,12 @@ class LavadoAdapter(
             binding.matriculaCoche.text = vehiculo.matricula.uppercase()
             binding.precioLavado.text = "Precio"
             binding.cantidad.text = "${lavado.precio} €"
-            binding.fondoTipoLavado.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, color))
+            binding.fondoTipoLavado.setBackgroundColor(
+                ContextCompat.getColor(
+                    holder.itemView.context,
+                    color
+                )
+            )
             binding.imgCoche.setImageResource(icono)
         }
     }

@@ -15,6 +15,10 @@ import java.time.LocalDate;
 @Entity
 public class Lavado {
 
+    public Lavado(String tipoLavado) {
+        this.tipoLavado = tipoLavado;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
