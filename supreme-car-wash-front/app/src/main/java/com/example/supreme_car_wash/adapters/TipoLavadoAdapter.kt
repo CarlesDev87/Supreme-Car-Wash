@@ -36,9 +36,10 @@ class TipoLavadoAdapter (private val  tipoLavados: List<LavadoResponse>,
         }
 
         with(holder){
+            setListener(tipoLavado)
             binding.txtTipoLavado.text = tipoLavado.tipoLavado.uppercase()
             binding.constraintLavado.background = (ContextCompat.getDrawable(context, fondo))
-            setListener(tipoLavado)
+
         }
     }
 

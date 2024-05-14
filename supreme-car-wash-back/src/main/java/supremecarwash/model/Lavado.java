@@ -15,8 +15,10 @@ import java.time.LocalDate;
 @Entity
 public class Lavado {
 
-    public Lavado(String tipoLavado) {
+    public Lavado(String tipoLavado, String descripcion, Integer precio) {
         this.tipoLavado = tipoLavado;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
 
     @Id

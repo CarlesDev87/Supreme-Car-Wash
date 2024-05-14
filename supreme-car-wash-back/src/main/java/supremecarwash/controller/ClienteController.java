@@ -39,18 +39,6 @@ public class ClienteController {
     }
 
 
-    /*
-    @PostMapping("/login")
-
-    public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password){
-
-        if (service.loginCliente(email, password)) {
-            return ResponseEntity.ok("Login exitoso");
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
-    }
-    */
-
     @GetMapping("/validar")
 
     public ResponseEntity<Map<String, String>> validar(@RequestParam String email, @RequestParam String password){

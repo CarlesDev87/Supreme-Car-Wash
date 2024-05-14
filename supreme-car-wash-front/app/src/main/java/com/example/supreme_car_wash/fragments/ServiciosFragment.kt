@@ -72,11 +72,6 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
             linearLayout = LinearLayoutManager(context)
 
 
-            val tipoLavados = lavados.map { it.tipoLavado }
-
-
-
-
             withContext(Dispatchers.Main) {
                 binding.recyclerLavados.apply {
                     layoutManager = linearLayout

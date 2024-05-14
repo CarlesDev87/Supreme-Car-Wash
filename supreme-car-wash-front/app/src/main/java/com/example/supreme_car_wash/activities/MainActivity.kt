@@ -55,9 +55,13 @@ class MainActivity : AppCompatActivity() {
             val totalScrollRange = appBarLayout.totalScrollRange
             if (abs(verticalOffset) == totalScrollRange) {
                 toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.principal))
-                if (cliente != null) {
+
+                //Seccion donde ponemos el nombre del cliente a la toolbar cuando se pliega la collapsing toolbar
+
+               /* if (cliente != null) {
                     toolbar.setTitle("${cliente.nombre} ${cliente.apellido}")
-                }
+                } */
+
             } else  {
                 toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.principal))
 

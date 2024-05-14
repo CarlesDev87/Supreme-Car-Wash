@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface ILavadoRepository extends JpaRepository<Lavado, Integer> {
 
-    @Query("SELECT distinct new Lavado(l.tipoLavado) FROM Lavado l")
+    @Query("SELECT distinct new Lavado(l.tipoLavado, l.descripcion, l.precio) FROM Lavado l")
     List<Lavado> encontrarTiposLavados();
+
 }

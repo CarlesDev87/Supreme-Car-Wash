@@ -12,6 +12,8 @@
         android:id="@+id/recyclerTipoLavados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_lavados"/>
+        tools:listitem="@layout/item_lavados"
+        android:clickable="true"
+        android:focusable="true"/>
 
 </FrameLayout>
