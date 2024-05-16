@@ -45,7 +45,6 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
         super.onCreate(savedInstanceState)
         arguments?.let {
             cliente = it.getSerializable(ARG_CLIENTE) as ClienteResponse
-
         }
     }
 
@@ -72,16 +71,6 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
         binding.nombreUsuario.text = "${cliente.nombre} ${cliente.apellido}"
 
 
-        for (vehiculo in vehiculos) {
-            binding.vehiculoUsuario.text = "${vehiculo.marca} ${vehiculo.modelo} "
-        }
-
-
-
-
-
-
-
         /*
         * ESTE CODIGO HACE QUE LA TOOLBAR SE PINTE DE ROJO CUANDO SE PLIEGA LA COLLAPSING TOOLBAR Y
         * MUESTRE EL NOMBRE DEL CLIENTE COMO TITULO DE LA TOOLBAR
@@ -101,9 +90,6 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
 
                 //Seccion donde ponemos el nombre del cliente a la toolbar cuando se pliega la collapsing toolbar
 
-                /* if (cliente != null) {
-                     toolbar.setTitle("${cliente.nombre} ${cliente.apellido}")
-                 } */
 
             } else {
                 toolbar.setBackgroundColor(
@@ -150,6 +136,15 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado {
         CoroutineScope(Dispatchers.IO).launch {
             val llamada = getRetrofit().create(APIService::class.java).getVehiculos(query)
             vehiculos = llamada.body()!!
+            withContext(Dispatchers.Main) {
+                nombreVehiculos()
+            }
+        }
+    }
+
+    private fun nombreVehiculos() {
+        for (vehiculo in vehiculos) {
+            binding.vehiculoUsuario.text = "${vehiculo.marca} ${vehiculo.modelo} "
         }
     }
 
