@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragmentMain: MainFragment
     private lateinit var fragmentPerfil: PerfilFragment
-    private lateinit var fragmentServicios: ServiciosFragment
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +32,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         fragmentMain = MainFragment()
         fragmentPerfil = PerfilFragment()
-        fragmentServicios = ServiciosFragment()
+
 
         supportFragmentManager.beginTransaction().replace(R.id.frgMain, fragmentMain).commit()
 
+
+        //ESTE CODIGO ES EL QUE VOY A MIGRAR DE MAIN ACTTIVITY A FRAGMENT SERVICIOS PARA QUE LA TOOLBAR SOLO APAREZCA ALLI
+
         val cliente = intent.getSerializableExtra("cliente") as? ClienteResponse
+
+        //Hago una instancia de cliente y la envio cuando invoco al fragment de servicios
+        val frgServicios: ServiciosFragment = ServiciosFragment.newInstance(cliente as ClienteResponse)
+
+        /*
 
         if (cliente != null) {
             binding.nombreUsuario.text = "${cliente.nombre} ${cliente.apellido}"
 
         }
-        
+
 
         /*
         * ESTE CODIGO HACE QUE LA TOOLBAR SE PINTE DE ROJO CUANDO SE PLIEGA LA COLLAPSING TOOLBAR Y
@@ -67,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
-
+        */
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         bottomNavigationView.setOnItemSelectedListener {
@@ -98,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                             R.anim.fade_in_fragment,
                             R.anim.fade_out_fragment
                         )
-                        replace(R.id.frgMain, fragmentServicios)
+                        replace(R.id.frgMain, frgServicios)
                         addToBackStack(null)
                         commit()
                     }

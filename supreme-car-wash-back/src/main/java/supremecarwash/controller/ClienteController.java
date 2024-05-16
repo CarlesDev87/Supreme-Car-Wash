@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import supremecarwash.model.Cliente;
+import supremecarwash.model.dto.ClienteResponseDto;
 import supremecarwash.service.AuthService;
 import supremecarwash.service.IClienteService;
 
@@ -52,6 +53,12 @@ public class ClienteController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error","Credenciales incorrectas"));
         }
+    }
+
+    @GetMapping("/{id}")
+    public ClienteResponseDto getCliente(@PathVariable Integer id){
+        return service.obtenerClientePorId(id);
+
     }
 
 

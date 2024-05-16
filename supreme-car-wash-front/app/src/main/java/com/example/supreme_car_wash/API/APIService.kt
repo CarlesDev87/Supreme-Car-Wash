@@ -10,6 +10,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Url
 
 interface APIService {
@@ -19,6 +20,9 @@ suspend fun getLavados(@Url url: String): Response<List<LavadoResponse>>
 
 @GET
 suspend fun getClientes(@Url url:String): Response<List<ClienteResponse>>
+
+@GET
+suspend fun getCliente (@Url url:String): Response<ClienteResponse>
 
 @GET
 suspend fun getVehiculos(@Url url: String): Response<List<VehiculoResponse>>
