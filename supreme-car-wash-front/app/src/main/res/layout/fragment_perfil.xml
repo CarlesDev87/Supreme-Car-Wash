@@ -1,14 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PerfilFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Encabezado de la pantalla -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="@string/perfil"
+        android:titleTextColor="@android:color/white" />
 
-</FrameLayout>
+    <!-- Botón para agregar un nuevo vehículo -->
+    <Button
+        android:id="@+id/btnAgregarVehiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Agregar Vehículo" />
+
+
+
+    <!-- Sección para mostrar los datos del cliente -->
+    <LinearLayout
+        android:id="@+id/layoutDatosCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAgregarVehiculo"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginBottom="3dp"
+            android:text="Datos del Cliente"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Campo para mostrar el nombre del cliente -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiNombreCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:counterMaxLength="20"
+            android:hint="@string/nombre_del_cliente">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiApellidoCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/apellido_del_cliente"
+            app:counterMaxLength="30">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApellidoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiDireccionCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/direccion_del_cliente">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDireccionCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo para mostrar el correo electrónico del cliente -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiCorreoCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/correo_electronico_del_cliente">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCorreoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros campos de datos del cliente (pueden incluirse más aquí) -->
+
+        <!-- Divider para separar grupos de información -->
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnGuardarDatos"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutDatosCliente"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="15dp"
+                android:text="Guardar cambios" />
+
+            <Button
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutDatosCliente"
+                android:layout_centerHorizontal="true"
+
+                android:text="Cerrar Sesión" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- Botón para cerrar sesión -->
+
+
+</RelativeLayout>

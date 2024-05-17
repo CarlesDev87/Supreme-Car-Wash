@@ -14,5 +14,10 @@
     <string name="contraseña">Introduce tu contraseña</string>
     <string name="usuario">Introduce tu usuario</string>
     <string name="btnEntrar">Entrar</string>
+    <string name="apellido_del_cliente">Apellido del Cliente</string>
+    <string name="direccion_del_cliente">Dirección del Cliente</string>
+    <string name="nombre_del_cliente">Nombre del Cliente</string>
+    <string name="correo_electronico_del_cliente">Correo Electrónico del Cliente</string>
+    <string name="perfil">Perfil</string>
 
 </resources>

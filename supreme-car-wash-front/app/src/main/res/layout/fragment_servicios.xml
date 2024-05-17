@@ -43,12 +43,25 @@
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    app:layout_constraintBottom_toTopOf="@id/vehiculoUsuario"
+                    app:layout_constraintBottom_toTopOf="@id/btnSeleccionVehiculo"
                     app:layout_constraintEnd_toEndOf="@id/constraintCollapsingToolbar"
                     app:layout_constraintStart_toEndOf="@id/logoUsuario"
                     tools:text="Nombre del cliente" />
 
-                <TextView
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSeleccionVehiculo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintCollapsingToolbar"
+                    app:layout_constraintEnd_toEndOf="@id/constraintCollapsingToolbar"
+                    android:text="Selecciona tu vehículo"
+                    android:fontFamily="@font/exo_2"
+                    android:textSize="22sp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintStart_toEndOf="@id/logoUsuario"
+                    />
+
+               <!-- <TextView
                     android:id="@+id/vehiculoUsuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,7 +76,7 @@
 
                     app:layout_constraintHorizontal_bias="0.719"
                     app:layout_constraintStart_toEndOf="@id/logoUsuario"
-                    tools:text="Vehiculo del cliente" />
+                    tools:text="Vehiculo del cliente" /> -->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
