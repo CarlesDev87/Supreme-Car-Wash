@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import supremecarwash.model.Lavado;
+import supremecarwash.model.dto.LavadoRequestDto;
 import supremecarwash.model.dto.LavadoResponseDto;
 import supremecarwash.service.ILavadoService;
 
@@ -26,10 +27,19 @@ public class LavadoController {
     }
 
     @PostMapping
-    public void addLavado(@RequestBody Lavado lavado) {
+    public ResponseEntity<Void> addLavado(@RequestBody LavadoRequestDto lavado) {
 
-        service.insertarLavado(lavado);
+        Lavado lav = service.insertarLavado(lavado);
 
+        if (lav != null) {
+
+            return new ResponseEntity<>(HttpStatus.CREATED);
+
+        } else {
+
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        }
     }
 
     @GetMapping("/tipoLavado")

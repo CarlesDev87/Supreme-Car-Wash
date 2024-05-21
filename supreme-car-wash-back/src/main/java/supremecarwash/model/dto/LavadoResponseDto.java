@@ -18,7 +18,6 @@ public class LavadoResponseDto {
 
     private int id;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate fechaLavado;
 
     private String tipoLavado;

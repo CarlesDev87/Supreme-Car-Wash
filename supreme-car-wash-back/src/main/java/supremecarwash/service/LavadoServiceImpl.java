@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import supremecarwash.model.Lavado;
+import supremecarwash.model.dto.LavadoRequestDto;
 import supremecarwash.model.dto.LavadoResponseDto;
 import supremecarwash.repository.ILavadoRepository;
 
@@ -26,8 +27,10 @@ public class LavadoServiceImpl implements ILavadoService {
     }
 
     @Override
-    public void insertarLavado(Lavado lavado) {
-        repo.save(lavado);
+    public Lavado insertarLavado(LavadoRequestDto lavado) {
+        Lavado lavadoDto = modelMapper.map(lavado, Lavado.class);
+        return repo.save(lavadoDto);
+
     }
 
     @Override

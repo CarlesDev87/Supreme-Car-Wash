@@ -3,7 +3,7 @@ package com.example.supreme_car_wash.responses
 import com.google.gson.annotations.SerializedName
 
 class VehiculoResponse(
-    @SerializedName("id") val id: Int,
+    @SerializedName("id") var id: Int,
     @SerializedName("marca") val marca: String,
     @SerializedName("modelo") val modelo: String,
     @SerializedName("matricula") val matricula: String,

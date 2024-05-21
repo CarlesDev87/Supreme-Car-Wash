@@ -21,7 +21,6 @@ import kotlin.math.abs
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var fragmentMain: MainFragment
     private lateinit var fragmentPerfil: PerfilFragment
 
 
@@ -30,11 +29,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        fragmentMain = MainFragment()
+
         fragmentPerfil = PerfilFragment()
 
 
-        supportFragmentManager.beginTransaction().replace(R.id.frgMain, fragmentMain).commit()
+
 
 
         //ESTE CODIGO ES EL QUE VOY A MIGRAR DE MAIN ACTTIVITY A FRAGMENT SERVICIOS PARA QUE LA TOOLBAR SOLO APAREZCA ALLI
@@ -43,7 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         //Hago una instancia de cliente y la envio cuando invoco al fragment de servicios
         val frgServicios: ServiciosFragment = ServiciosFragment.newInstance(cliente as ClienteResponse)
+        val fragmentMain: MainFragment = MainFragment.newInstance(cliente)
 
+        supportFragmentManager.beginTransaction().replace(R.id.frgMain, fragmentMain).commit()
         /*
 
         if (cliente != null) {
@@ -131,12 +132,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl("http://10.0.2.2:8080/")
-            .addConverterFactory(GsonConverterFactory.create()).build()
-    }
-
 
 }
 

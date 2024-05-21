@@ -5,6 +5,7 @@
     <color name="botonLogin">#FFA500</color>
     <color name="textoLogin">#673AB7</color>
     <color name="principal">#A21919</color>
+    <color name="secundario">#FF5353</color>
     <color name="normal">#ADD8E6</color>
     <color name="integral">#368E36</color>
     <color name="deluxe">#FFD700</color>

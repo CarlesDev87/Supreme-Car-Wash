@@ -10,7 +10,11 @@ import java.util.List;
 @Repository
 public interface IVehiculoRepository extends JpaRepository<Vehiculo, Integer> {
 
+
     @Query("SELECT vehiculo FROM Vehiculo vehiculo WHERE vehiculo.cliente.id = :clienteId")
     List<Vehiculo> vehiculosPorCliente(Integer clienteId);
+
+    Vehiculo findVehiculoById(Integer id);
+
 
 }

@@ -19,5 +19,8 @@
     <string name="nombre_del_cliente">Nombre del Cliente</string>
     <string name="correo_electronico_del_cliente">Correo Electrónico del Cliente</string>
     <string name="perfil">Perfil</string>
+    <string name="marca_y_modelo">Marca y modelo</string>
+    <string name="matricula">Matricula</string>
+    <string name="icono_coche">Icono coche</string>
 
 </resources>

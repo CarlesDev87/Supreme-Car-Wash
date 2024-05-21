@@ -2,16 +2,22 @@ package com.example.supreme_car_wash.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import com.auth0.jwt.interfaces.DecodedJWT
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.auth0.jwt.JWT
 import com.example.supreme_car_wash.API.APIService
 import com.example.supreme_car_wash.R
 import com.example.supreme_car_wash.databinding.ActivityLoginBinding
+import com.example.supreme_car_wash.fragments.MainFragment
 import com.example.supreme_car_wash.responses.ClienteResponse
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -31,40 +37,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*
-        * ESTE EVENTO GESTIONA LA APARICION Y LA DESAPARICION DE INPUTS CUANDO DAMOS CLICK AL BOTON INICIAR SESION */
+        //METODO PRINCIPALES
 
-        binding.btnLogin.setOnClickListener {
-            val fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        registrarCliente()
+        animaciones()
+        pulsarBotonEntrar()
 
-            binding.tieUsuario.startAnimation(fadeInAnimation)
-            binding.tieUsuario.visibility = View.VISIBLE
-
-            binding.tiePass.startAnimation(fadeInAnimation)
-            binding.tiePass.visibility = View.VISIBLE
-
-            binding.btnEntrar.startAnimation(fadeInAnimation)
-            binding.btnEntrar.visibility = View.VISIBLE
-
-            val fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
-
-            binding.btnLogin.startAnimation(fadeOutAnimation)
-            binding.btnLogin.visibility = View.GONE
-
-            binding.registrate.startAnimation(fadeOutAnimation)
-            binding.registrate.visibility = View.GONE
-        }
-
-        binding.btnEntrar.setOnClickListener {
-
-            val email: String = binding.etUsuario.text.toString().trim()
-            val password: String = binding.etPass.text.toString().trim()
-
-            val query = "/clientes/validar?email=$email&password=$password"
-
-            loginCliente(query)
-
-        }
     }
 
     private fun decodeToken(token: String): DecodedJWT {
@@ -100,7 +78,8 @@ class LoginActivity : AppCompatActivity() {
                     val password = decodedJWT?.getClaim("password")?.asString()
 
 
-                    cliente = ClienteResponse(id, nombre, apellido, email, direccion, telefono, password)
+                    cliente =
+                        ClienteResponse(id, nombre, apellido, email, direccion, telefono, password)
 
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("cliente", cliente)
@@ -144,6 +123,51 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun pulsarBotonEntrar() {
+        binding.btnEntrar.setOnClickListener {
+
+            val email: String = binding.etUsuario.text.toString().trim()
+            val password: String = binding.etPass.text.toString().trim()
+
+            val query = "/clientes/validar?email=$email&password=$password"
+
+            loginCliente(query)
+
+        }
+    }
+
+
+    private fun registrarCliente() {
+        binding.registrate.setOnClickListener {
+            val intent = Intent(this, RegistrarActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun animaciones() {
+        //ESTE EVENTO GESTIONA LA APARICION Y LA DESAPARICION DE INPUTS CUANDO DAMOS CLICK AL BOTON INICIAR SESION */
+
+        binding.btnLogin.setOnClickListener {
+            val fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+
+            binding.tieUsuario.startAnimation(fadeInAnimation)
+            binding.tieUsuario.visibility = View.VISIBLE
+
+            binding.tiePass.startAnimation(fadeInAnimation)
+            binding.tiePass.visibility = View.VISIBLE
+
+            binding.btnEntrar.startAnimation(fadeInAnimation)
+            binding.btnEntrar.visibility = View.VISIBLE
+
+            val fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
+
+            binding.btnLogin.startAnimation(fadeOutAnimation)
+            binding.btnLogin.visibility = View.GONE
+
+            binding.registrate.startAnimation(fadeOutAnimation)
+            binding.registrate.visibility = View.GONE
+        }
+    }
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()

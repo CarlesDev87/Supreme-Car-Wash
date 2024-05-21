@@ -1,11 +1,15 @@
 package com.example.supreme_car_wash.API
 
+import com.example.supreme_car_wash.requests.ClienteRequest
+import com.example.supreme_car_wash.requests.LavadoRequest
+import com.example.supreme_car_wash.requests.VehiculoRequest
 import com.example.supreme_car_wash.responses.ClienteResponse
 import com.example.supreme_car_wash.responses.LavadoResponse
 import com.example.supreme_car_wash.responses.TokenResponse
 import com.example.supreme_car_wash.responses.VehiculoResponse
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -27,8 +31,19 @@ suspend fun getCliente (@Url url:String): Response<ClienteResponse>
 @GET
 suspend fun getVehiculos(@Url url: String): Response<List<VehiculoResponse>>
 
+@GET("/vehiculos/id/{id}")
+suspend fun getVehiculo(@Path("id") id: Int): Response<VehiculoResponse>
+
 @GET
 suspend fun loginCliente(@Url url: String): Response<TokenResponse>
 
+@POST("/lavados")
+suspend fun addLavado(@Body lavado: LavadoRequest): LavadoRequest
+
+@POST("/clientes")
+suspend fun addCliente(@Body cliente: ClienteRequest): ClienteRequest
+
+@POST("/vehiculos")
+suspend fun addVehiculo(@Body vehiculo: ClienteRequest): VehiculoRequest
 
 }

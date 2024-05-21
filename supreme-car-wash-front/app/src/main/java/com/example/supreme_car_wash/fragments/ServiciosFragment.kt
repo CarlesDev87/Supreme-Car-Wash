@@ -67,56 +67,19 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado, OnClickListenerVehi
         val idCliente = "/clientes/${cliente.id.toString()}"
         val idVehiculo = "/vehiculos/${cliente.id.toString()}"
 
+        //METODOS DE LLAMADA A SERVICIOS BACKEND PARA OBTENER LOS DATOS DE CLIENTE Y VEHICULOS
         getCliente(idCliente)
         getVehiculos(idVehiculo)
 
+        //METODOS PARA CONTROLAR EVENTOS DE LA TOOLBAR Y SELECCION DE VEHICULOS
+        botonSeleccionVehiculo()
+        nombreColorToolbar()
+
         binding.nombreUsuario.text = "${cliente.nombre} ${cliente.apellido}"
 
-        binding.btnSeleccionVehiculo.setOnClickListener {
-
-            val dialogo = layoutInflater.inflate(R.layout.dialogo_seleccion_vehiculo, null)
-            val recycler: RecyclerView = dialogo.findViewById(R.id.recyclerVehiculos)
-
-            recycler.layoutManager = LinearLayoutManager(context)
-            vehiculoAdapter = VehiculoAdapter(vehiculos, this@ServiciosFragment)
-            recycler.adapter = vehiculoAdapter
-            recycler.addItemDecoration(itemDecoration)
-
-            MaterialAlertDialogBuilder(requireContext(), R.style.CustomDialogTheme)
-                .setTitle("Tus vehículos")
-                .setView(dialogo)
-                .setPositiveButton("Selecciona tu vehículo y pulsa aquí") { dialog, which ->
-                    // Respond to positive button press
-                }
-                .show()
-
-        }
-
-        /*
-        * ESTE CODIGO HACE QUE LA TOOLBAR SE PINTE DE ROJO CUANDO SE PLIEGA LA COLLAPSING TOOLBAR Y
-        * MUESTRE EL NOMBRE DEL CLIENTE COMO TITULO DE LA TOOLBAR
-        * */
-
-        val appBarLayout = binding.appbar
-        val toolbar = binding.toolbar
-        toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-        appBarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val totalScrollRange = appBarLayout.totalScrollRange
-            if (abs(verticalOffset) == totalScrollRange) {
-                toolbar.setBackgroundColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.principal
-                    )
-                )
-                //Seccion donde ponemos el nombre del cliente a la toolbar cuando se pliega la collapsing toolbar
-                toolbar.title = "${cliente.nombre} ${cliente.apellido}"
-
-
-            }
-        }
         return binding.root
     }
+
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
@@ -143,10 +106,60 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado, OnClickListenerVehi
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de error al usuario
-                    Toast.makeText(requireContext(), "No existen lavados para este coche", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "No existen lavados para este coche",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+        }
+    }
 
+    private fun botonSeleccionVehiculo() {
+
+        binding.btnSeleccionVehiculo.setOnClickListener {
+
+            val dialogo = layoutInflater.inflate(R.layout.dialogo_seleccion_vehiculo, null)
+            val recycler: RecyclerView = dialogo.findViewById(R.id.recyclerVehiculos)
+
+            recycler.layoutManager = LinearLayoutManager(context)
+            vehiculoAdapter = VehiculoAdapter(vehiculos, this@ServiciosFragment)
+            recycler.adapter = vehiculoAdapter
+            recycler.addItemDecoration(itemDecoration)
+
+            MaterialAlertDialogBuilder(requireContext(), R.style.CustomDialogTheme)
+                .setTitle("Tus vehículos")
+                .setView(dialogo)
+                .setPositiveButton("Selecciona tu vehículo y pulsa aquí") { dialog, which ->
+                    // Respond to positive button press
+                }
+                .show()
+        }
+    }
+
+    private fun nombreColorToolbar() {
+        /*
+        * ESTE CODIGO HACE QUE LA TOOLBAR SE PINTE DE ROJO CUANDO SE PLIEGA LA COLLAPSING TOOLBAR Y
+        * MUESTRE EL NOMBRE DEL CLIENTE COMO TITULO DE LA TOOLBAR
+        * */
+
+        val appBarLayout = binding.appbar
+        val toolbar = binding.toolbar
+        toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+        appBarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val totalScrollRange = appBarLayout.totalScrollRange
+            if (abs(verticalOffset) == totalScrollRange) {
+                toolbar.setBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.principal
+                    )
+                )
+                //Seccion donde ponemos el nombre del cliente a la toolbar cuando se pliega la collapsing toolbar
+                toolbar.title = "${cliente.nombre} ${cliente.apellido}"
+
+            }
         }
     }
 
@@ -180,12 +193,7 @@ class ServiciosFragment : Fragment(), OnClickListenerLavado, OnClickListenerVehi
 
     override fun onClick(vehiculo: VehiculoResponse) {
 
-            getLavados("/lavados/${vehiculo.id}")
-
-
-
-
-
+        getLavados("/lavados/${vehiculo.id}")
 
     }
 }

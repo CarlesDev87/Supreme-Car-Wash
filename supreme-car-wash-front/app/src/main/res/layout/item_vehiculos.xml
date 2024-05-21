@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_recycler_selector">
+
+    <ImageView
+        android:id="@+id/imgCoche"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/icono_coche"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/coche2" />
 
     <TextView
-        android:id="@+id/marcaModeloCoche"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Marca y modelo"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/matriculaCoche"
-        android:layout_width="match_parent"
+        android:id="@+id/txtMarcaModelo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="Matricula" />
+        app:layout_constraintStart_toEndOf="@id/imgCoche"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txtMatricula"
+        android:text="@string/marca_y_modelo"
+        />
 
+    <TextView
+        android:id="@+id/txtMatricula"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@id/imgCoche"
+        app:layout_constraintTop_toBottomOf="@id/txtMarcaModelo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/matricula"
+        />
 
-</LinearLayout>
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

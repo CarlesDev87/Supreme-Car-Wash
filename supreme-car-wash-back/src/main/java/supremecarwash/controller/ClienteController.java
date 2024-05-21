@@ -5,10 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import supremecarwash.model.Cliente;
+import supremecarwash.model.dto.ClienteRequestDto;
 import supremecarwash.model.dto.ClienteResponseDto;
 import supremecarwash.service.AuthService;
 import supremecarwash.service.IClienteService;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -27,15 +27,20 @@ public class ClienteController {
 
     @GetMapping()
     public List<Cliente> getClientes(){
-
         return service.listarCLientes();
 
     }
 
     @PostMapping
-    public void addCliente(Cliente cliente){
+    public ResponseEntity<Cliente> addCliente(ClienteRequestDto cliente){
+        Cliente clienteDto = service.insertarCliente(cliente);
 
-        service.insertarCliente(cliente);
+        if (clienteDto != null) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
 
     }
 
@@ -57,6 +62,7 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     public ClienteResponseDto getCliente(@PathVariable Integer id){
+
         return service.obtenerClientePorId(id);
 
     }

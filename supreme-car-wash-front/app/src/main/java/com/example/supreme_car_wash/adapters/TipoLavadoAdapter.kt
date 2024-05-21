@@ -28,6 +28,8 @@ class TipoLavadoAdapter (private val  tipoLavados: List<LavadoResponse>,
     override fun onBindViewHolder(holder: TipoLavadoAdapter.ViewHolder, position: Int) {
         val tipoLavado = tipoLavados[position]
 
+
+
         val fondo = when (tipoLavado.tipoLavado) {
             "Normal" -> R.drawable.lavadonormal
             "Integral" -> R.drawable.lavadointegral

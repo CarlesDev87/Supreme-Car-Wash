@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import supremecarwash.model.Vehiculo;
+import supremecarwash.model.dto.VehiculoRequestDto;
 import supremecarwash.model.dto.VehiculoResponseDto;
 import supremecarwash.service.IVehiculoService;
 
@@ -31,8 +32,26 @@ public class VehiculoController {
     }
 
     @PostMapping
-    public void addVehiculo(@RequestBody Vehiculo vehiculo) {
-        service.insertarVehiculo(vehiculo);
+    public ResponseEntity<Vehiculo> addVehiculo(@RequestBody VehiculoRequestDto vehiculoDto) {
+        Vehiculo vehiculo = service.insertarVehiculo(vehiculoDto);
+
+        if(vehiculo != null) {
+            return new ResponseEntity<>(vehiculo, HttpStatus.CREATED);
+        } else {
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        }
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<VehiculoResponseDto> getVehiculoPorId(@PathVariable Integer id) {
+        VehiculoResponseDto v = service.buscarVehiculoPorId(id);
+
+        if (v != null) {
+            return new ResponseEntity<>(v, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
 }

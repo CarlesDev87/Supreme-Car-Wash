@@ -67,5 +67,28 @@
             android:textAlignment="center"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona tu vehículo"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:padding="8dp" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/txtDiagDescripcionTipoLavado" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDialogoVehiculos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_vehiculos"
+            android:clickable="true"
+            android:focusable="true"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

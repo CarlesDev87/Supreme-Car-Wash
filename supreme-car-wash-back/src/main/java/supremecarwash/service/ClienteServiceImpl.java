@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import supremecarwash.model.Cliente;
+import supremecarwash.model.dto.ClienteRequestDto;
 import supremecarwash.model.dto.ClienteResponseDto;
 import supremecarwash.repository.IClienteRepository;
 import java.util.List;
@@ -24,8 +25,9 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    public void insertarCliente(Cliente cliente) {
-        repo.save(cliente);
+    public Cliente insertarCliente(ClienteRequestDto cliente) {
+        Cliente clienteDto = modelMapper.map(cliente, Cliente.class);
+        return repo.save(clienteDto);
     }
 
     @Override

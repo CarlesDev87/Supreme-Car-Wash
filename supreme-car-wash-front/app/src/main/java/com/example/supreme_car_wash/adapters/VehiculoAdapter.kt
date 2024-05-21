@@ -15,6 +15,7 @@ class VehiculoAdapter(
 ) : RecyclerView.Adapter<VehiculoAdapter.ViewHolder>() {
 
     private lateinit var context: Context
+    private var selectedItemPosition: Int = RecyclerView.NO_POSITION
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiculoAdapter.ViewHolder {
         context = parent.context
@@ -24,12 +25,9 @@ class VehiculoAdapter(
 
     override fun onBindViewHolder(holder: VehiculoAdapter.ViewHolder, position: Int) {
         val vehiculo = vehiculos[position]
+        val isSelected = position == selectedItemPosition
 
-        with(holder) {
-            setListener(vehiculo)
-            binding.marcaModeloCoche.text = "${vehiculo.marca} ${vehiculo.modelo}".uppercase()
-            binding.matriculaCoche.text = vehiculo.matricula
-        }
+        holder.bind(vehiculo, isSelected)
     }
 
     override fun getItemCount(): Int = vehiculos.size
@@ -37,9 +35,31 @@ class VehiculoAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemVehiculosBinding.bind(view)
 
-        fun setListener(vehiculo: VehiculoResponse) {
-            binding.root.setOnClickListener {
-                listener.onClick(vehiculo)
+        fun bind(vehiculo: VehiculoResponse, isSelected: Boolean) {
+            with(binding) {
+                txtMarcaModelo.text = "${vehiculo.marca} ${vehiculo.modelo}".uppercase()
+                txtMatricula.text = vehiculo.matricula
+                radioButton.isChecked = isSelected
+
+                root.setOnClickListener {
+                    val previousItemPosition = selectedItemPosition
+                    selectedItemPosition = adapterPosition
+
+                    notifyItemChanged(previousItemPosition) // Notifica el cambio del ítem previamente seleccionado
+                    notifyItemChanged(selectedItemPosition) // Notifica el cambio del nuevo ítem seleccionado
+
+                    listener.onClick(vehiculo)
+                }
+
+                radioButton.setOnClickListener {
+                    val previousItemPosition = selectedItemPosition
+                    selectedItemPosition = adapterPosition
+
+                    notifyItemChanged(previousItemPosition)
+                    notifyItemChanged(selectedItemPosition)
+
+                    listener.onClick(vehiculo)
+                }
             }
         }
     }
