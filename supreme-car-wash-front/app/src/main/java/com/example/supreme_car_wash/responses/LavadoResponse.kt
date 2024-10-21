@@ -11,6 +11,6 @@ data class LavadoResponse(
     @SerializedName("precio") val precio: Int,
     @SerializedName("descripcion") val descripcion: String,
     @SerializedName("tipoLavado") val tipoLavado: String,
-    @SerializedName("idVehiculo") val idVehiculo: Int
+    @SerializedName("vehiculo") val vehiculo: VehiculoResponse
 ) : Serializable {
 }

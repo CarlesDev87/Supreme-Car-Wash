@@ -20,6 +20,7 @@ import com.example.supreme_car_wash.adapters.TipoLavadoAdapter
 import com.example.supreme_car_wash.adapters.VehiculoAdapter
 import com.example.supreme_car_wash.databinding.FragmentMainBinding
 import com.example.supreme_car_wash.requests.LavadoRequest
+import com.example.supreme_car_wash.requests.VehiculoRequest
 import com.example.supreme_car_wash.responses.ClienteResponse
 import com.example.supreme_car_wash.responses.LavadoResponse
 import com.example.supreme_car_wash.responses.VehiculoResponse
@@ -134,7 +135,7 @@ class MainFragment : Fragment(), OnClickListenerTipoLavado, OnClickListenerVehic
                     descripcion = tipoLavado.descripcion,
                     precio = tipoLavado.precio,
                     estado = "Reservado",
-                    vehiculo = vehiculo
+                    vehiculo = vehiculo!!
                 )
 
                 lavadoRequest.toString()
@@ -144,7 +145,11 @@ class MainFragment : Fragment(), OnClickListenerTipoLavado, OnClickListenerVehic
                 if (lavadoRequest.estado == "Reservado") {
                     Toast.makeText(context, "Lavado Reservado", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, "No se ha podido reservar el lavado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "No se ha podido reservar el lavado",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
             }
@@ -171,8 +176,14 @@ class MainFragment : Fragment(), OnClickListenerTipoLavado, OnClickListenerVehic
 
     private fun getVehiculos(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val llamada = getRetrofit().create(APIService::class.java).getVehiculos(query)
-            vehiculos = llamada.body()!!
+            try {
+                val llamada = getRetrofit().create(APIService::class.java).getVehiculos(query)
+                vehiculos = llamada.body()!!
+            } catch (e: NullPointerException) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "No hay vehículos disponibles", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -181,7 +192,7 @@ class MainFragment : Fragment(), OnClickListenerTipoLavado, OnClickListenerVehic
             try {
                 val response = getRetrofit().create(APIService::class.java).addLavado(lavado)
 
-            } catch (e : EOFException) {
+            } catch (e: EOFException) {
                 Log.e("ERROR", e.toString())
             }
         }

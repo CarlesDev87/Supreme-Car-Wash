@@ -61,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
                 val response = getRetrofit().create(APIService::class.java)
                     .loginCliente(query)
 
-                Log.d("Respuesta", response.toString())
 
                 if (response.isSuccessful) {
                     val tokenResponse = response.body()

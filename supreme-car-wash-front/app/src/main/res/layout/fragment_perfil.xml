@@ -6,33 +6,37 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Encabezado de la pantalla -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarPerfil"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:title="@string/perfil"
-        android:titleTextColor="@android:color/white" />
+        android:layout_height="wrap_content">
 
-    <!-- Botón para agregar un nuevo vehículo -->
-    <Button
-        android:id="@+id/btnAgregarVehiculo"
-        android:layout_width="wrap_content"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/principal"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/coche_nuevo2"
+            app:navigationIconTint="@color/white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/logoSupreme"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:text="Agregar Vehículo" />
-
-
+        android:layout_below="@id/appBarPerfil"
+        android:scaleType="centerCrop"
+        android:src="@drawable/supreme2" />
 
     <!-- Sección para mostrar los datos del cliente -->
     <LinearLayout
         android:id="@+id/layoutDatosCliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnAgregarVehiculo"
+        android:layout_below="@id/logoSupreme"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
         android:padding="16dp">
@@ -42,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_marginBottom="3dp"
-            android:text="Datos del Cliente"
+            android:text="@string/datos_del_cliente"
             />
 
         <com.google.android.material.divider.MaterialDivider
@@ -119,7 +123,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"/>
 
+
+
         <LinearLayout
+            android:id="@+id/linearAbajo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -129,23 +136,19 @@
                 android:id="@+id/btnGuardarDatos"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/layoutDatosCliente"
-                android:layout_centerHorizontal="true"
                 android:layout_marginEnd="15dp"
-                android:text="Guardar cambios" />
+                android:text="@string/guardar_cambios" />
 
             <Button
                 android:id="@+id/btnCerrarSesion"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/layoutDatosCliente"
-                android:layout_centerHorizontal="true"
-
                 android:text="Cerrar Sesión" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 
 
     <!-- Botón para cerrar sesión -->

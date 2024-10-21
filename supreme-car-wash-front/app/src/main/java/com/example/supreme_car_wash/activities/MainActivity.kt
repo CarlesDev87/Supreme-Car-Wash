@@ -21,8 +21,6 @@ import kotlin.math.abs
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var fragmentPerfil: PerfilFragment
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,55 +28,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fragmentPerfil = PerfilFragment()
-
-
-
-
-
-        //ESTE CODIGO ES EL QUE VOY A MIGRAR DE MAIN ACTTIVITY A FRAGMENT SERVICIOS PARA QUE LA TOOLBAR SOLO APAREZCA ALLI
-
         val cliente = intent.getSerializableExtra("cliente") as? ClienteResponse
 
-        //Hago una instancia de cliente y la envio cuando invoco al fragment de servicios
+        //Hago una instancia de cliente y la envio a los tres fragments para que reciban el cliente del Login
         val frgServicios: ServiciosFragment = ServiciosFragment.newInstance(cliente as ClienteResponse)
         val fragmentMain: MainFragment = MainFragment.newInstance(cliente)
+        val fragmentPerfil: PerfilFragment = PerfilFragment.newInstance(cliente)
 
         supportFragmentManager.beginTransaction().replace(R.id.frgMain, fragmentMain).commit()
-        /*
 
-        if (cliente != null) {
-            binding.nombreUsuario.text = "${cliente.nombre} ${cliente.apellido}"
-
-        }
-
-
-        /*
-        * ESTE CODIGO HACE QUE LA TOOLBAR SE PINTE DE ROJO CUANDO SE PLIEGA LA COLLAPSING TOOLBAR Y
-        * MUESTRE EL NOMBRE DEL CLIENTE COMO TITULO DE LA TOOLBAR
-        * */
-
-        val appBarLayout = findViewById<AppBarLayout>(R.id.appbar)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val totalScrollRange = appBarLayout.totalScrollRange
-            if (abs(verticalOffset) == totalScrollRange) {
-                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.principal))
-
-                //Seccion donde ponemos el nombre del cliente a la toolbar cuando se pliega la collapsing toolbar
-
-               /* if (cliente != null) {
-                    toolbar.setTitle("${cliente.nombre} ${cliente.apellido}")
-                } */
-
-            } else  {
-                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.principal))
-
-            }
-        })
-        */
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
         bottomNavigationView.setOnItemSelectedListener {
 
                 item ->

@@ -49,6 +49,7 @@ class VehiculoAdapter(
                     notifyItemChanged(selectedItemPosition) // Notifica el cambio del nuevo ítem seleccionado
 
                     listener.onClick(vehiculo)
+
                 }
 
                 radioButton.setOnClickListener {

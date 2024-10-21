@@ -32,7 +32,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> addCliente(ClienteRequestDto cliente){
+    public ResponseEntity<Cliente> addCliente(@RequestBody ClienteRequestDto cliente){
         Cliente clienteDto = service.insertarCliente(cliente);
 
         if (clienteDto != null) {
@@ -40,10 +40,18 @@ public class ClienteController {
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-
     }
 
+    @PutMapping
+    public ResponseEntity<Cliente> updateCliente(@RequestBody ClienteRequestDto cliente){
+        Cliente clienteDto = service.insertarCliente(cliente);
+
+        if (clienteDto != null) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @GetMapping("/validar")
 

@@ -6,16 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.supreme_car_wash.API.APIService
 import com.example.supreme_car_wash.R
 import com.example.supreme_car_wash.databinding.ItemCochesBinding
 import com.example.supreme_car_wash.responses.LavadoResponse
+import com.example.supreme_car_wash.responses.VehiculoResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class LavadoAdapter(
-    private val lavados: List<LavadoResponse>, private val listener: OnClickListenerLavado
+    private val lavados: List<LavadoResponse>,
+    private val listener: OnClickListenerLavado
 ) : RecyclerView.Adapter<LavadoAdapter.ViewHolder>() {
 
     private lateinit var context: Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LavadoAdapter.ViewHolder {
         context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.item_coches, parent, false)
@@ -44,15 +53,19 @@ class LavadoAdapter(
         with(holder) {
             setListener(lavado)
             binding.tipoLavado.text = lavado.tipoLavado.uppercase()
-            binding.precioLavado.text = "Precio"
+           // binding.precioLavado.text = "Precio"
             binding.cantidad.text = "${lavado.precio} €"
+           // binding.marcaCoche.text = lavado.vehiculo.marca
+           // binding.modeloCoche.text = lavado.vehiculo.modelo
+          //  binding.matriculaCoche.text = lavado.vehiculo.matricula
+
             binding.fondoTipoLavado.setBackgroundColor(
                 ContextCompat.getColor(
                     holder.itemView.context,
                     color
                 )
             )
-            binding.imgCoche.setImageResource(icono)
+
         }
     }
 
@@ -67,6 +80,4 @@ class LavadoAdapter(
             }
         }
     }
-
-
 }

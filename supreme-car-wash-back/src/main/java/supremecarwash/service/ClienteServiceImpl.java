@@ -25,6 +25,14 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
+    public Cliente modificarCliente(ClienteRequestDto clienteRequestDto) {
+
+       Cliente cliente1 = modelMapper.map(clienteRequestDto, Cliente.class);
+       return repo.save(cliente1);
+
+    }
+
+    @Override
     public Cliente insertarCliente(ClienteRequestDto cliente) {
         Cliente clienteDto = modelMapper.map(cliente, Cliente.class);
         return repo.save(clienteDto);

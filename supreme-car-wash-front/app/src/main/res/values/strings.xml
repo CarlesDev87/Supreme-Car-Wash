@@ -22,5 +22,7 @@
     <string name="marca_y_modelo">Marca y modelo</string>
     <string name="matricula">Matricula</string>
     <string name="icono_coche">Icono coche</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+    <string name="datos_del_cliente">Datos del Cliente</string>
 
 </resources>

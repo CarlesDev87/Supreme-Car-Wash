@@ -1,52 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etMarca"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Marca"
-        android:inputType="text" />
+        android:src="@drawable/supreme2" />
 
-    <EditText
-        android:id="@+id/etModelo"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Modelo"
-        android:inputType="text" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/etMatricula"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutMarca"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayoutModelo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMarca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Marca"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutModelo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textInputLayoutMarca"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etModelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Modelo"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Matricula"
-        android:inputType="text" />
+        android:layout_marginTop="10dp">
 
-    <EditText
-        android:id="@+id/etColor"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Matricula"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Color"
-        android:inputType="text" />
+        android:layout_marginTop="10dp">
 
-    <NumberPicker
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Color"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp">
 
-         />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAño"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Año"
+            android:inputType="date" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnGuardar"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:text="Guardar" />
 
 </LinearLayout>

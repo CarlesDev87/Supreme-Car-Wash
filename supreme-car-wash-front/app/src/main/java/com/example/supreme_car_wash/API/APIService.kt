@@ -14,6 +14,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Url
 
@@ -37,6 +38,9 @@ suspend fun getVehiculo(@Path("id") id: Int): Response<VehiculoResponse>
 @GET
 suspend fun loginCliente(@Url url: String): Response<TokenResponse>
 
+@PUT
+suspend fun updateCliente(@Body cliente: ClienteRequest): Response<ClienteRequest>
+
 @POST("/lavados")
 suspend fun addLavado(@Body lavado: LavadoRequest): LavadoRequest
 
@@ -44,6 +48,6 @@ suspend fun addLavado(@Body lavado: LavadoRequest): LavadoRequest
 suspend fun addCliente(@Body cliente: ClienteRequest): ClienteRequest
 
 @POST("/vehiculos")
-suspend fun addVehiculo(@Body vehiculo: ClienteRequest): VehiculoRequest
+suspend fun addVehiculo(@Body vehiculo: VehiculoRequest): VehiculoRequest
 
 }

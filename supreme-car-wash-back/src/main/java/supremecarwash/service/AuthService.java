@@ -31,8 +31,6 @@ public class AuthService {
 
     }
 
-
-
     private String generateToken(Cliente cliente) {
 
         Claims claims = Jwts.claims().setSubject(cliente.getEmail());

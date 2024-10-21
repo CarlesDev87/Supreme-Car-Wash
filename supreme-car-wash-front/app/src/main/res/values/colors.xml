@@ -9,4 +9,5 @@
     <color name="normal">#ADD8E6</color>
     <color name="integral">#368E36</color>
     <color name="deluxe">#FFD700</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

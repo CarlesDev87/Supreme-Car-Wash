@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,7 +14,7 @@
     <View
         android:id="@+id/fondoTipoLavado"
         android:layout_width="100dp"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,37 +24,29 @@
         android:id="@+id/cnstCoches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fondoTipoLavado"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="10dp">
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/tipoLavado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/imgCoche"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/cnstCoches"
             tools:text="Tipo de Lavado"
             android:textStyle="bold"
-            android:layout_marginStart="20dp"
+
             android:textSize="30sp"
             android:textColor="@color/principal"
             android:fontFamily="@font/exo_2"
             />
 
-        <ImageView
-            android:id="@+id/imgCoche"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="5dp"
-            app:layout_constraintStart_toStartOf="@id/cnstCoches"
-            app:layout_constraintTop_toTopOf="@id/cnstCoches"
-            app:layout_constraintBottom_toBottomOf="@id/cnstCoches"
-            app:layout_constraintEnd_toStartOf="@id/tipoLavado"
-            android:src="@drawable/supreme"
-            />
 
+<!--
         <TextView
             android:id="@+id/marcaCoche"
             android:layout_width="wrap_content"
@@ -63,7 +57,7 @@
             tools:text="Tipo de Lavado"
             android:textStyle="bold"
             android:layout_marginStart="30dp"
-            android:textColor="@color/principal"
+            android:textColor="@color/black"
             android:fontFamily="@font/exo_2"
             />
 
@@ -77,7 +71,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="30dp"
-            android:textColor="@color/principal"
+            android:textColor="@color/black"
             android:fontFamily="@font/exo_2"
             />
 
@@ -91,7 +85,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="30dp"
-            android:textColor="@color/principal"
+            android:textColor="@color/black"
             android:fontFamily="@font/exo_2"
             />
 
@@ -106,23 +100,22 @@
             tools:text="Precio"
             android:textStyle="bold"
             android:textSize="20sp"
-
-            android:textColor="@color/principal"
+            android:textColor="@color/black"
             android:fontFamily="@font/exo_2"
-            />
+            /> -->
 
         <TextView
             android:id="@+id/cantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/tipoLavado"
-            app:layout_constraintTop_toBottomOf="@id/precioLavado"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="@id/cnstCoches"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="Precio"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
-            android:textColor="@color/principal"
+            android:textColor="@color/black"
             android:fontFamily="@font/exo_2"
             android:textSize="35sp"
             />

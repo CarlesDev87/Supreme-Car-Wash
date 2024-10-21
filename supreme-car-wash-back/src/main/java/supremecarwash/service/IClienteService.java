@@ -10,6 +10,8 @@ public interface IClienteService {
 
     List<Cliente> listarCLientes();
 
+    Cliente modificarCliente(ClienteRequestDto clienteRequestDto);
+
     Cliente insertarCliente(ClienteRequestDto cliente);
 
     ClienteResponseDto obtenerClientePorId(Integer id);
